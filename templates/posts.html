@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content%}
+<br>
+<section>
+    {% for post in all_posts %}
+        <div class="jumbotron">
+                <h1 class="display-4">{{post.title}}</h1>
+                <p class="lead">{{post.category}}</p>
+                <hr class="my-4">
+                <p>{{post.description}}</p>
+                <p class="lead">
+                  <a class="btn btn-primary btn-lg" href="{% url 'Post' id=post.id %}" role="button">Read more</a>
+                </p>
+              </div>
+              <br>
+    {% endfor %}
+</section>
+{% endblock %}

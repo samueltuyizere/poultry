@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section>
+    <div class="carousel">
+        <img src="media/cock-2522623_1280.jpg" alt="" width="100%" height="60%">
+    </div>
+</section>
+<br>
+<section>
+    <div class="container">
+        <div class="row">
+            <legend align="center">Our Best Selling Animals</legend>
+            <div class="row">
+            {% for product in home_products %}
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{product.image.url}}" alt="{{product.title}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.description}}</p>
+                        <a href="{% url 'Product' id=product.id %}" class="btn btn-outline-secondary">View {{product.title}}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div align="center" class="mt-2">
+    <a href="{% url 'Products' %}" type="button" class="btn btn-outline-secondary" align="center"> View All Products</a>
+    </div>
+    <br>
+    <div class="container">
+            <div class="row">
+                <legend align="center">Our Recent Blog Posts</legend>
+                <div class="row">
+                {% for post in home_posts %}
+                <div class="col-sm-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{post.image.url}}" alt="{{post.title}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{post.title}}</h5>
+                            <p class="card-text">{{post.description}}</p>
+                            <a href="{% url 'Post' id=post.id %}" class="btn btn-outline-secondary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div align="center" class="mt-2">
+                <a href="{% url 'Posts' %}" type="button" class="btn btn-outline-secondary" align="center"> View All Posts</a>
+                </div>
+                <br>
+</section>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block content %}
+<br>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{{single_post.image.url}}" alt="{{single_post.title}}" width="90%">
+            </div>
+            <div class="col-sm-8">
+                <h3>{{single_post.title}}</h3>
+                <p>{{single_post.description}}</p>
+                <br>
+                {% for comment in comments %}
+                <div class="alert alert-light" role="alert">
+                    <p><b>Posted By:</b> {{comment.posted_by}}</p>
+                    <p>{{comment.description}}</p>
+                </div>
+                {% endfor %}
+
+                {% if success == empty %}
+                {% else %}
+
+                <p class="alert alert-primary centered"> {{ success }}</p>
+
+                {% endif %}
+
+                <legend>Comment on {{single_post.title}}</legend>
+                <form action="{% url 'Post' id=single_post.id %}" method="POST">
+                    {% csrf_token %}
+                    <input class="form-control mt-3" type="text" name="posted_by" placeholder="Enter Your Names">
+                    <textarea class="form-control mt-3" name="description" id="" cols="30" rows="10"
+                              placeholder="Write your comment here"></textarea>
+                    <input type="hidden" value="{{single_post.title}}" name="content">
+                    <input type="submit" class="btn btn-outline mt-3 col-lg-4 centered">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

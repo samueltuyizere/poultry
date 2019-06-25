@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block content%}
+<br>
+<legend align="center"> We have {{all_products.count}} Product(s) for you to buy!</legend>
+<section>
+    <div class="container">
+
+        <div class="row">
+            {% for product in all_products %}
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{product.image.url}}" alt="{{product.title}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.description}}</p>
+                        <a href="{% url 'Product' id=product.id %}" class="btn btn-outline-secondary">View {{product.title}}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
