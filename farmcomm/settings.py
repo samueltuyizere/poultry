@@ -24,7 +24,7 @@ SECRET_KEY = '4m+rjgze9@x0+69#il&%ug%%v6f6!yu*+=(dm%gi6$zxcu)*m)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['poultry-farm-rw.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
